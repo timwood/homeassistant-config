@@ -35,9 +35,13 @@ sensor.pws_feelslike_f:
 sensor.pws_temp_f:
   friendly_name: Temperature
   icon: mdi:thermometer
-
 #
 # Sensor to track new commits to Github
 #
 sensor.new_commits:
-  hidden: true  
+  hidden: true
+#
+# Sensor to track config errors
+#
+sensor.config_error:
+  hidden: true

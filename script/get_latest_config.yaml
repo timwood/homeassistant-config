@@ -5,4 +5,9 @@ sequence:
     entity_id: sensor.new_commits
     above: 1
   - service: shell_command.update_config_from_github
-  - service: homeassistant.restart
+  - service: shell_command.check_config
+  - condition: numeric_state
+    entity_id: sensor.config_error
+    below: 1
+  - service: shell_command.restart_hass
+#  - service: homeassistant.restart

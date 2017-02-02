@@ -2,6 +2,8 @@
   sensors:
     new_commits:
       value_template: '{{ states("sensor.new_commits") }}'
+    config_error:
+      value_template: '{{ states("sensor.config_error") }}'
 
 #
 #  WeatherUnderground Shared Sensors

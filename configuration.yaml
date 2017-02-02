@@ -154,6 +154,8 @@ binary_sensor:
 shell_command:
   update_new_commits_sensor: bash /home/hass/.homeassistant/bin/update_new_commits_sensor.sh
   update_config_from_github: bash /home/hass/.homeassistant/bin/update_config_from_github.sh
+  restart_hass: bash /home/hass/.homeassistant/bin/restart_hass.sh
+  check_config: bash /home/hass/.homeassistant/bin/check_config.sh
 
 script: !include_dir_named script/
 automation: !include_dir_merge_list automation/
