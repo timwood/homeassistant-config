@@ -14,7 +14,7 @@ local_weather:
 weather:
   name: Weather
   view: yes
-  icon: mdi:weather-cloudy
+#  icon: mdi:weather-cloudy
   entities:
     - camera.local_radar
     - group.local_weather

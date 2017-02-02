@@ -1,7 +1,7 @@
 cameras:
   name: Cameras
   view: yes
-  icon: mdi:video
+#  icon: mdi:video
   entities:
     - camera.kitchen
     - camera.living_room
