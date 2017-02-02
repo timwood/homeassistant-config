@@ -1,0 +1,26 @@
+- platform: template
+  sensors:
+    new_commits:
+      value_template: '{{ states("sensor.new_commits") }}'
+
+#
+#  WeatherUnderground Shared Sensors
+#
+    pws_stationid:
+      value_template: '{{ states.sensor.pws_station_id.state }}'
+    pws_uv:
+      value_template: '{{ states.sensor.pws_UV_2.state }}'
+    pws_observation_time:
+      value_template: '{{ states.sensor.pws_observation_time_2.state }}'
+    pws_feelslike_string:
+      value_template: '{{ states.sensor.pws_feelslike_string_2.state }}'
+    wind:
+      value_template: ' {{ states.sensor.pws_wind_string.state }} - {{ states.sensor.pws_wind_dir.state }} at {{ states.sensor.pws_wind_mph.state }} {{ states.sensor.pws_wind_mph.attributes.unit_of_measurement }}, gust at {{ states.sensor.pws_wind_gust_mph.state }} {{ states.sensor.pws_wind_gust_mph.attributes.unit_of_measurement }} '
+    precip_today_string:
+      value_template: '{{ states.sensor.pws_precip_today_string.state }}'
+    sunset_time:
+      value_template: '{{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom("%-I:%M %p") }}'
+    sunrise_time:
+      value_template: '{{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom("%-I:%M %p") }}'
+    pws_temp_f:
+      value_template: '{{ states.sensor.pws_temp_f_2.state }} {{ states.sensor.pws_temp_f_2.attributes.unit_of_measurement }}'

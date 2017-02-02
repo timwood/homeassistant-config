@@ -1,0 +1,162 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret home_assistant_latitude
+  longitude: !secret home_assistant_longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: !secret home_assistant_elevation
+  # metric for Metric, imperial for Imperial
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: America/New_York
+  # CUSTOMIZE!
+  customize: !include customize.yaml
+
+# Show links to resources in log and frontend
+#introduction:
+
+# Enables the frontend
+frontend:
+
+http:
+  # Uncomment this to add a password (recommended!)
+  api_password: !secret http_password
+  # Uncomment this if you are using SSL or running in Docker etc
+  base_url: !secret home_assistant_url
+  server_port: 8443
+  ssl_certificate: !secret ssl_cert
+  ssl_key: !secret ssl_key
+  cors_allowed_origins: !secret cors
+  use_x_forwarded_for: True
+  trusted_networks: !secret networks
+  ip_ban_enabled: True
+  login_attempts_threshold: 5
+
+# Checks for available updates
+updater:
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time.
+history:
+
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+# Cameras
+camera:
+- platform: generic
+  still_image_url: !secret wunderground_radar_loop
+  name: Local Radar
+- platform: mjpeg
+  mjpeg_url: !secret kitchen_cam_url
+  name: Kitchen
+- platform: mjpeg
+  mjpeg_url: !secret livingroom_cam_url
+  name: Living Room
+- platform: mjpeg
+  mjpeg_url: !secret hallway_cam_url
+  name: Hallway
+
+# Text to speech
+tts:
+  platform: google
+
+device_tracker:
+#  - platform: locative
+#  - platform: owntracks
+  - platform: gpslogger
+
+zone:
+  - name: Home
+    latitude: !secret home_assistant_latitude
+    longitude: !secret home_assistant_longitude
+    radius: 75
+    icon: mdi:home-variant
+  - name: Work
+    latitude: !secret work_lat
+    longitude: !secret work_long
+    radius: 250
+    icon: mdi:building
+
+input_select:
+  music_test:
+    name: Music test
+    options:
+      - Start
+      - Stop
+    initial: Stop
+    icon: mdi:music-box
+
+switch:
+  platform: command_line
+  switches:
+    kitchen_camera_flash:
+      command_on: !secret kitchen_camera_flash_cmd_on
+      command_off: !secret kitchen_camera_flash_cmd_off
+      command_state: !secret kitchen_camera_flash_cmd_state
+      value_template: '{{ value_json.curvals.torch == "on" }}'
+      friendly_name: Kitchen Camera Flash
+    living_room_camera_flash:
+      command_on: !secret livingroom_camera_flash_cmd_on
+      command_off: !secret livingroom_camera_flash_cmd_off
+      command_state: !secret livingroom_camera_flash_cmd_state
+      value_template: '{{ value_json.curvals.torch == "on" }}'
+      friendly_name: Living Room Camera Flash
+
+media_player:
+  - platform: onkyo
+    host: onkyo
+    name: Surround Sound Living Room
+    sources:
+      video1: 'Boxee'
+      video2: 'DVR'
+      video3: 'Wii'
+      video4: 'FireTV'
+      video6: 'Chromecast'
+      blueray: 'Blueray'
+
+insteon_local:
+  host: hub
+  username: !secret insteon_hub_un
+  password: !secret insteon_hub_pass
+  timeout: 10
+  port: !secret insteon_hub_port
+
+light:
+  - platform: insteon_local
+
+binary_sensor:
+- platform: rest
+  name: Hallway Motion
+  sensor_class: motion
+  resource: !secret hallway_cam_motion
+  value_template: '{{ value_json.motion_active.data[0][1][0] | round(0) }}'
+- platform: rest
+  name: Kitchen Motion
+  sensor_class: motion
+  resource: !secret kitchen_cam_motion
+  value_template: '{{ value_json.motion_active.data[0][1][0] | round(0) }}'
+#- platform: rest
+#  name: Living Room Motion
+#  sensor_class: motion
+#  resource: !secret livingroom_cam_motion
+#  value_template: '{{ value_json.motion_active.data[0][1][0] | round(0) }}'
+
+shell_command:
+  update_new_commits_sensor: bash /home/hass/.homeassistant/bin/update_new_commits_sensor.sh
+  update_config_from_github: bash /home/hass/.homeassistant/bin/update_config_from_github.sh
+
+script: !include_dir_named script/
+automation: !include_dir_merge_list automation/
+notify: !include_dir_merge_list notifications/
+sensor: !include_dir_merge_list sensor/
+group: !include_dir_merge_named group/

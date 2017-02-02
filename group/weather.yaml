@@ -1,0 +1,20 @@
+local_weather:
+  name: !secret local_weather_friendly_name
+  entities:
+    - sensor.pws_stationid
+    - sensor.pws_observation_time
+    - sensor.pws_temp_f
+    - sensor.pws_feelslike_string
+    - sensor.precip_today_string
+    - sensor.wind
+    - sensor.sunrise_time
+    - sensor.sunset_time
+    - sensor.pws_uv
+#     - sensor.my_sun
+weather:
+  name: Weather
+  view: yes
+  icon: mdi:weather-cloudy
+  entities:
+    - camera.local_radar
+    - group.local_weather

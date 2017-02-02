@@ -1,0 +1,43 @@
+#
+#  WeatherUnderground Customizations
+#
+sensor.pws_stationid:
+  friendly_name: Station
+  icon: mdi:fingerprint
+  value_template: '{{ states.sensor.pws_station_id.state }}'
+sensor.pws_observation_time:
+  friendly_name: Observation
+  icon: mdi:calendar-clock
+sensor.pws_uv:
+  friendly_name: UV Level
+  icon: mdi:sunglasses
+sensor.pws_feelslike_string:
+  friendly_name: Feels Like
+  icon: mdi:account-alert
+sensor.wind:
+  friendly_name: Wind
+  icon: mdi:weather-windy
+sensor.precip_today_string:
+  friendly_name: Precip Today
+  icon: mdi:weather-rainy
+sensor.my_sun:
+  friendly_name: Sun
+  icon: mdi:white-balance-sunny
+sensor.sunrise_time:
+  friendly_name: Sunrise
+  icon: mdi:weather-sunset-up
+sensor.sunset_time:
+  friendly_name: Sunset
+  icon: mdi:weather-sunset-down
+sensor.pws_feelslike_f:
+  friendly_name: Feels Like F
+  icon: mdi:account-alert
+sensor.pws_temp_f:
+  friendly_name: Temperature
+  icon: mdi:thermometer
+
+#
+# Sensor to track new commits to Github
+#
+sensor.new_commits:
+  hidden: true  

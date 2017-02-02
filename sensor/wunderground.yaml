@@ -1,0 +1,18 @@
+# Weather Prediction
+- platform: wunderground
+  api_key: !secret wunderground_api_key
+  pws_id: !secret wunderground_station_id
+  monitored_conditions:
+   - alerts
+   - feelslike_f
+   - feelslike_string
+   - observation_time
+   - precip_today_string
+   - station_id
+   - temp_f
+   - UV
+   - wind_degrees
+   - wind_dir
+   - wind_gust_mph
+   - wind_mph
+   - wind_string

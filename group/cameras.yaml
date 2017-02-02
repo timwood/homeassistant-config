@@ -1,0 +1,10 @@
+cameras:
+  name: Cameras
+  view: yes
+  icon: mdi:video
+  entities:
+    - camera.kitchen
+    - camera.living_room
+    - camera.hallway
+    - switch.living_room_camera_flash
+    - switch.kitchen_camera_flash

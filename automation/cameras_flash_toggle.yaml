@@ -1,0 +1,26 @@
+#- alias: 'Living Room Camera Flash Toggle'
+#  trigger:
+#    platform: state
+#    entity_id: switch.living_room_camera_flash
+#    to: 'On'
+#  condition:
+#    condition: state
+#    entity_id: switch.living_room_camera_flash
+#    state: 'Off'
+#  action:
+#    service: switch.turn_on
+#    data:
+#      entity_id: switch.living_room_camera_flash
+#- alias: 'Kitchen Camera Flash Toggle'
+#  trigger:
+#    platform: state
+#    entity_id: switch.kitchen_camera_flash
+#    to: 'On'
+#  condition:
+#    condition: state
+#    entity_id: switch.kitchen_camera_flash
+#    state: 'Off'
+#  action:
+#    service: switch.turn_on
+#    data:
+#      entity_id: switch.kitchen_camera_flash

@@ -1,0 +1,16 @@
+###################################
+##  Uses IFTTT to notify me of bad logins.
+###################################
+# Borrowed from https://github.com/CCOSTAN/Home-AssistantConfig/blob/master/automation/bad_logins.yaml
+
+- alias: Login Failure
+  hide_entity: True
+  trigger:
+    platform: template
+    value_template: "{{ states('persistent_notification.httplogin') != 'unknown' }}"
+
+  action:
+    service: notify.local_smtp
+    data:
+      title: 'Home Assistant login failure'
+      message: 'There was a hack attempt! Go Check the GUI for details.'

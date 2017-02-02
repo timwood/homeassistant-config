@@ -1,0 +1,16 @@
+# TODO: Setup this default view with all the things
+#  default_view:
+#    view: yes
+#    entities:
+#      - group.local_weather
+#      - camera.local_radar
+#      - group.family_locator
+#      - media_player.hallway
+#      - media_player.downstairs
+#      - media_player.bedroom
+#      - media_player.kitchen
+#      - media_player.house
+#      - media_player.living_room
+#      - persistent_notification.tim_left_work
+##      - group.all_devices
+##      - group.all_automations

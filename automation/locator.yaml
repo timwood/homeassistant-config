@@ -1,0 +1,58 @@
+- alias: 'Tim left work'
+#  initial_state: false
+  hide_entity: false
+  trigger:
+#    platform: zone
+#    # Tim's phone
+#    entity_id: device_tracker.8xv7n16602001125
+#    zone: zone.work
+#    event: leave 
+    platform: state
+    entity_id: device_tracker.8xv7n16602001125
+    from: 'work'
+    to: 'not_home'
+    for:
+      minutes: 2
+  condition:
+    condition: time
+    after: '15:00:00'
+  action:
+  - service: persistent_notification.create
+    data_template:
+      message:  >
+        Tim left work at {{now().strftime("%-I:%M %p")}}
+  - service: tts.google_say
+    entity_id: media_player.hallway
+    data_template:
+      message:  >
+        Tim left work at {{now().strftime("%-I:%M %p")}}
+
+- alias: 'Tim is home'
+  initial_state: false
+  hide_entity: false
+  trigger:
+    platform: state
+    entity_id: device_tracker.8xv7n16602001125
+    from: 'not_home'
+    to: 'home'
+  action:
+  - service: persistent_notification.create
+    data_template:
+      message:  >
+        Tim got home at {{now().strftime("%-I:%M %p")}}
+  - service: tts.google_say
+    entity_id: media_player.hallway
+    data:
+      message: "Tim is home!"
+
+- alias: 'Start Music'
+  trigger:
+    platform: state
+    entity_id: input_select.music_test
+    to: 'Start'
+  action:
+    service: media_player.play_media
+    data:
+      entity_id: media_player.kitchen
+      media_content_id: !secret start_music_automation_mp3_url
+      media_content_type: 'audio/mp3'

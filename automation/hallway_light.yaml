@@ -1,0 +1,58 @@
+- alias: 'Sunset lights'
+  hide_entity: false
+  trigger:
+    platform: sun
+    event: sunset
+    offset: "-00:45:00"
+  action:
+  - service: persistent_notification.create
+    data_template:
+      message:  >
+        Turning on lights before sunset
+  # 45 minutes before sunset turn on lights dim
+  - service: light.turn_on
+    entity_id: light.downstairs_hallway_light
+    data:
+      brightness: 130
+  - delay: 00:30:00
+  # 30 minutes later brighten some
+  - service: light.turn_on
+    entity_id: light.downstairs_hallway_light
+    data:
+      brightness: 180
+  - delay: 00:15:00
+  # 15 minutes later brighten fully
+  - service: light.turn_on
+    entity_id: light.downstairs_hallway_light
+    data:
+      brightness: 255
+
+- alias: 'Sleep lights'
+  hide_entity: false
+  trigger:
+    platform: time
+    after: '1:01:00'
+  action:
+  - service: persistent_notification.create
+    data_template:
+      message:  >
+        Dimming lights for sleep
+  - service: light.turn_on
+    entity_id: light.downstairs_hallway_light
+    data:
+      brightness: 100
+
+- alias: 'Sunrise lights'
+  hide_entity: false
+  trigger:
+    platform: sun
+    event: sunrise
+  action:
+  - service: persistent_notification.create
+    data_template:
+      message:  >
+        Turning off lights after sunrise
+  - service: light.turn_on
+    entity_id: light.downstairs_hallway_light
+    data:
+      brightness: 100
