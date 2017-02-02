@@ -20,5 +20,6 @@ nest.conf
 bin/update_new_commits_sensor.sh
 bin/check_config.sh
 bin/check_config.sh
+bin/restart_hass.sh
 .HA_VERSION
 tts/
