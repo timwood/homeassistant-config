@@ -134,6 +134,14 @@ insteon_local:
 light:
   - platform: insteon_local
 
+climate:
+  platform: honeywell
+  username: !secret honeywell_username
+  password: !secret honeywell_password
+  # 17.2 degrees Celsius ~= 63.0 degrees Fahrenheit
+  away_temperature: 17.2
+  region: us
+
 binary_sensor:
 - platform: rest
   name: Hallway Motion
