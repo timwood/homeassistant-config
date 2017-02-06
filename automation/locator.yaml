@@ -21,6 +21,7 @@
     data_template:
       message:  >
         Tim left work at {{now().strftime("%-I:%M %p")}}
+
   - service: tts.google_say
     entity_id: media_player.hallway
     data_template:
@@ -40,6 +41,7 @@
     data_template:
       message:  >
         Tim got home at {{now().strftime("%-I:%M %p")}}
+
   - service: tts.google_say
     entity_id: media_player.hallway
     data:
