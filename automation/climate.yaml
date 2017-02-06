@@ -16,7 +16,8 @@
   hide_entity: False
   trigger:
     platform: numeric_state
-    entity_id: climate.thermostat.temperature
+    entity_id: climate.thermostat
+    value_template: '{ state.attributes.temperature }'
     above: 80
     below: 60
   action:
