@@ -31,7 +31,6 @@
   action:
   - service: light.turn_off
     entity_id: light.downstairs_hallway_light
-    transition: 1
 
 - alias: 'Sunrise lights'
   hide_entity: false
