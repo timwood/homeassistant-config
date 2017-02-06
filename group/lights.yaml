@@ -31,21 +31,21 @@ tims:
 
 upstairs:
   name: Upstairs Lights
-  view: yes
+  view: no
   entities:
     - light.tims_lamp
     - light.boys_ceiling
 
 downstairs:
   name: Downstairs Lights
-  view: yes
+  view: no
   entities:
     - light.living_room_ceiling_2
     - light.living_room_ceiling_6
     - light.kitchen_ceiling
     - light.downstairs_hallway_light
 
-all_lights:
+all:
   name: Lights
   view: yes
   entities:
