@@ -5,11 +5,7 @@
     event: sunset
     offset: "-00:45:00"
   action:
-  - service: persistent_notification.create
-    data_template:
-      message:  >
-        Turning on lights before sunset
-  # 45 minutes before sunset turn on lights dim
+  # 45 minutes before sunset turn on lights to dim level
   - service: light.turn_on
     entity_id: light.downstairs_hallway_light
     data:
@@ -33,14 +29,9 @@
     platform: time
     after: '1:01:00'
   action:
-  - service: persistent_notification.create
-    data_template:
-      message:  >
-        Dimming lights for sleep
-  - service: light.turn_on
+  - service: light.turn_off
     entity_id: light.downstairs_hallway_light
-    data:
-      brightness: 100
+    transition: 1
 
 - alias: 'Sunrise lights'
   hide_entity: false
@@ -48,10 +39,6 @@
     platform: sun
     event: sunrise
   action:
-  - service: persistent_notification.create
-    data_template:
-      message:  >
-        Turning off lights after sunrise
   - service: light.turn_on
     entity_id: light.downstairs_hallway_light
     data:
