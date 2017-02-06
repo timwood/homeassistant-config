@@ -17,7 +17,7 @@ living:
     - light.living_room_ceiling_2
     - light.living_room_ceiling_6
 
-boys:
+kids:
   name: Boy's Room
   view: no
   entities:
