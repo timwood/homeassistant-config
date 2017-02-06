@@ -28,3 +28,9 @@ tims:
   view: no
   entities:
     - light.tims_lamp
+
+all:
+  name: All lights
+  view: yes
+  entities:
+    - group.all_lights
