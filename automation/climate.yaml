@@ -1,0 +1,26 @@
+- alias: Cold for sleep
+  hide_entity: False
+  trigger:
+    platform: time
+    after: '1:01:00'
+  action:
+  - service: climate.set_temperature
+    data:
+      temperature: 64
+  - service: notify.local_smtp
+    data:
+      title: 'Set temp cold for sleep at 1:01am'
+      message: 'Home assistant set Honeywell thermostat to 64 degrees fahrenheit'
+
+- alias: Thermostat temperature extreme
+  hide_entity: False
+  trigger:
+    platform: numeric_state
+    entity_id: climate.thermostat.temperature
+    above: 80
+    below: 60
+  action:
+  - service: notify.local_smtp
+    data:
+      title: 'Thermostat set below 60 or above 80  degrees fahrenheit!'
+      message: 'The Honeywell thermostat is set below 60 or above 80 degrees fahrenheit'
