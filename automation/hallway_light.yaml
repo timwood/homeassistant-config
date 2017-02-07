@@ -37,7 +37,9 @@
   trigger:
     platform: sun
     event: sunrise
+    offset: "-00:30:00"
   action:
+  # 30 minutes before sunrise turn light back on to dim level
   - service: light.turn_on
     entity_id: light.downstairs_hallway_light
     data:
