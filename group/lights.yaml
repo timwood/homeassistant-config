@@ -23,7 +23,7 @@ kids:
   entities:
     - light.boys_ceiling
 
-tims:
+tim:
   name: Tim's Lamp
   view: no
   entities:
