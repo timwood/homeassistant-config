@@ -123,12 +123,13 @@ media_player:
       video4: 'FireTV'
       video6: 'Chromecast'
       blueray: 'Blueray'
-  - platform: cast
-    host: Google-Home-Hallway
-  - platform: cast
-    host: Google-Home-Bedroom
-  - platform: cast
-    host: Chromecast-Audio-Kitchen
+# When combined with discovery: duplicate cast devices are listed.
+#  - platform: cast
+#    host: Google-Home-Hallway
+#  - platform: cast
+#    host: Google-Home-Bedroom
+#  - platform: cast
+#    host: Chromecast-Audio-Kitchen
 
 insteon_local:
   host: hub
