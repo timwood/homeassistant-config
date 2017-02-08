@@ -11,4 +11,4 @@
 * Multiple old Android phones running [IP Webcam app](https://play.google.com/store/apps/details?id=com.pas.webcam&hl=en) for camera and [sensor data](https://community.home-assistant.io/t/android-ip-webcam-as-a-camera-plus-sensors/10566)
 
 ## Groups
-See [groups/README.md](groups/README.md).
+See [group/README.md](group).
