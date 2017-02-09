@@ -71,14 +71,13 @@ tts:
   platform: google
 
 device_tracker:
-#  - platform: locative
-#  - platform: owntracks
   - platform: gpslogger
 # Router-based tracking
-  - platform: actiontec
-    host: !secret router_ip
-    username: !secret router_username
-    password: !secret router_password
+# Actiontec component uses Telnet, but the Verizon Gateway G1100 doesn't have an option to enabled Telnet, only SSH.
+#  - platform: actiontec
+#    host: !secret router_ip
+#    username: !secret router_username
+#    password: !secret router_password
 
 zone:
   - name: Home
