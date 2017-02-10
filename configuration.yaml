@@ -40,13 +40,20 @@ updater:
 discovery:
 
 # Allows you to issue voice commands from the frontend in enabled browsers
-conversation:
+#conversation:
 
 # Enables support for tracking state changes over time.
 history:
 
 # View all events in a logbook
 logbook:
+
+# Logging
+logger:
+  default: warning
+  logs:
+    homeassistant.components.insteon_local: critical
+    homeassistant.components.http: critical
 
 # Track the sun
 sun:
@@ -78,6 +85,12 @@ device_tracker:
 #    host: !secret router_ip
 #    username: !secret router_username
 #    password: !secret router_password
+  - platform: nmap_tracker
+    hosts: 192.168.0.0/24
+    home_interval: 10
+    consider_home: 600
+    interval_seconds: 10
+    scan_options: " --privileged -sP "
 
 zone:
   - name: Home
