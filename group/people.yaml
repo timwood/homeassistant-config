@@ -1,5 +1,6 @@
 family_locator:
   name: Weasley Clock
   entities:
-      # Tim's phone
-    - device_tracker.8xv7n16602001125
+    - device_tracker.tim
+    - device_tracker.tracy
+    - device_tracker.huison
