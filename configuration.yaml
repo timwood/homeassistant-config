@@ -90,7 +90,7 @@ device_tracker:
     home_interval: 10
     consider_home: 600
     interval_seconds: 10
-    scan_options: " --privileged -sP "
+    scan_options: " --host-timeout 5s -sn "
     track_new_devices: yes
     track: yes
 
