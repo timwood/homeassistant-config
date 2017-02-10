@@ -1,0 +1,5 @@
+- platform: rest
+  scan_interval: 2
+  name: Kitchen Motion Precise
+  resource: !secret kitchen_cam_motion_precise
+  value_template: '{{ value_json.motion.data[0][1][0] | round(0) }}'

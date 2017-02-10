@@ -1,0 +1,75 @@
+- alias: Go go gadget kitchen lights on
+  hide_entity: true
+  trigger:
+#    platform: state
+#    entity_id: sensor.kitchen_motion_precise
+#    from: '28'
+#    to: '60'
+    platform: numeric_state
+    entity_id: sensor.kitchen_motion_precise
+    above: 50
+
+  condition:
+  - condition: sun
+    after: sunset
+    after_offset: "00:30:00"
+  - condition: state
+    entity_id: light.kitchen_ceiling
+    state: 'off'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+#  - condition: state
+#    entity_id: sensor.kitchen_motion_precise
+#    state: '{{ state.state > 50}}'
+#    for:
+#      hours: 0
+#      minutes: 0
+#      seconds: 10
+
+  action:
+    service: light.turn_on
+    entity_id: light.kitchen_ceiling
+    data:
+      transition: 5
+
+- alias: Go go gadget kitchen lights off
+  hide_entity: true
+  trigger:
+#    platform: numeric_state
+#    entity_id: sensor.kitchen_motion_precise
+#    below: 70
+    platform: state
+    entity_id: light.kitchen_ceiling
+    from: 'off'
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+
+  condition:
+  - condition: sun
+    after: sunset
+    after_offset: "00:30:00"
+  - condition: numeric_state
+    entity_id: sensor.kitchen_motion_precise
+    below: 70
+#  - condition: state
+#    entity_id: light.kitchen_ceiling
+#    state: 'on'
+#    for:
+#      hours: 0
+#      minutes: 10
+#      seconds: 0
+
+  action:
+  - service: light.turn_off
+    entity_id: light.kitchen_ceiling
+    data:
+      transition: 5
+  - service: notify.local_smtp
+    data:
+      title: 'Turning lights off in Kitchen after 10 minutes of inactivity'
+      message: 'Current motion level is {{ sensor.kitchen_motion_precise }}'
