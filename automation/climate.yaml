@@ -7,10 +7,6 @@
   - service: climate.set_temperature
     data:
       temperature: 64
-  - service: notify.local_smtp
-    data:
-      title: 'Set temp cold for sleep at 1:01am'
-      message: 'Home assistant set Honeywell thermostat to 64 degrees fahrenheit'
 
 - alias: Thermostat temperature extreme
   hide_entity: False
