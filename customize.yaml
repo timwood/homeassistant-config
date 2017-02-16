@@ -48,3 +48,5 @@ sensor.config_error:
 
 input_boolean.timhome:
   entity_picture: /local/tim_newhair_120x120.jpg
+input_boolean.tracyhome:
+  entity_picture: /local/tracy_120x120.jpg

@@ -1,9 +1,10 @@
 family_locator:
   name: Weasley Clock
   entities:
-    - device_tracker.8xv7n16602001125
-    - device_tracker.timnmap
-    - device_tracker.tracy
-    - device_tracker.huison
     - input_boolean.timhome
     - input_boolean.tracyhome
+    - device_tracker.8xv7n16602001125
+    - device_tracker.timnmap
+    - device_tracker.zy223hffqx
+    - device_tracker.tracynmap
+    - device_tracker.huison
