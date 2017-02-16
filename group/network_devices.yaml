@@ -1,0 +1,4 @@
+network_devices:
+  name: Network Devices (Nmap)
+  entities:
+    - group.all_devices
