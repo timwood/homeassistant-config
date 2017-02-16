@@ -206,3 +206,10 @@ input_boolean:
     name: Tracy Home
     initial: on
     icon: mdi:cellphone-android
+
+emulated_hue:
+  type: google_home
+  listen_port: 80
+  expose_by_default: true
+  exposed_domains:
+    - light
