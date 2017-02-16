@@ -108,13 +108,15 @@ zone:
 
 proximity:
   home:
+    friendly_name: Home
     devices:
       # Tim
       - device_tracker.8xv7n16602001125
       # Tracy
       - device_tracker.zy223hffqx
     unit_of_measurement: mi
-  tim_work:
+  tim_office:
+    friendly_name: Tim's Office
     devices:
       # Tim
       - device_tracker.8xv7n16602001125
