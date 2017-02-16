@@ -4,3 +4,5 @@ family_locator:
     - device_tracker.8xv7n16602001125
     - device_tracker.tracy
     - device_tracker.huison
+    - input_boolean.timhome
+    - input_boolean.tracyhome

@@ -1,0 +1,61 @@
+#################################################################
+## Presence
+#################################################################
+- alias: 'Tim Away'
+  condition:
+    - condition: state
+      entity_id: input_boolean.timhome
+      state: 'on'
+    - condition: template
+      value_template: >
+        {%- if states.input_boolean.timhome.last_changed -%}
+          {{ (as_timestamp(now()) - as_timestamp(states.input_boolean.timhome.last_changed)) > 300 }}
+        {%- else -%}
+          true
+        {%- endif -%}
+  trigger:
+    - platform: state
+      entity_id: device_tracker.8xv7n16602001125
+      state: 'not_home'
+      for:
+        minutes: 10
+    - platform: state
+      entity_id: device_tracker.timnmap
+      state: 'not_home'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: input_boolean.timhome
+    - service: logbook.log
+      data_template:
+        name: "Tim away: "
+        message: >-
+          {%- for state in states if state.entity_id == trigger.entity_id -%}
+            {{ state.attributes.friendly_name }} is Away.
+          {%- endfor -%}
+
+- alias: 'Tim Home'
+  condition:
+    - condition: state
+      entity_id: input_boolean.timhome
+      state: 'off'
+    - condition: template
+      value_template: >
+        {%- if states.input_boolean.timhome.last_changed -%}
+          {{ (as_timestamp(now()) - as_timestamp(states.input_boolean.timhome.last_changed)) > 300 }}
+        {%- else -%}
+          true
+        {%- endif -%}
+  trigger:
+    - platform: state
+      entity_id: device_tracker.8xv7n16602001125, device_tracker.timnmap
+      state: 'home'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: input_boolean.timhome
+    - service: logbook.log
+      data_template:
+        name: "Tim home: "
+        message: >-
+          {%- for state in states if state.entity_id == trigger.entity_id -%}
+            {{ state.attributes.friendly_name }} is Home.
+          {%- endfor -%}

@@ -45,3 +45,6 @@ sensor.new_commits:
 #
 sensor.config_error:
   hidden: true
+
+input_boolean.timhome:
+  entity_picture: /local/tim_newhair_120x120.jpg

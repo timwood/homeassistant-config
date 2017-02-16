@@ -196,3 +196,13 @@ automation: !include_dir_merge_list automation/
 notify: !include_dir_merge_list notifications/
 sensor: !include_dir_merge_list sensor/
 group: !include_dir_merge_named group/
+
+input_boolean:
+  timhome:
+    name: Tim Home
+    initial: on
+    icon: mdi:cellphone-android
+  tracyhome:
+    name: Tracy Home
+    initial: on
+    icon: mdi:cellphone-android
