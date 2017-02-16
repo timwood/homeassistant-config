@@ -100,7 +100,7 @@ zone:
     longitude: !secret home_assistant_longitude
     radius: 75
     icon: mdi:home-variant
-  - name: Work
+  - name: Tim Work
     latitude: !secret work_lat
     longitude: !secret work_long
     radius: 250
@@ -115,6 +115,7 @@ proximity:
       - device_tracker.zy223hffqx
     unit_of_measurement: mi
   tim_office:
+    zone: tim_work
     devices:
       # Tim
       - device_tracker.8xv7n16602001125
