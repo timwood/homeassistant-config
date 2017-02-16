@@ -15,7 +15,7 @@
         {%- endif -%}
   trigger:
     - platform: state
-      entity_id: device_tracker.8xv7n16602001125,device_tracker.timnmap
+      entity_id: device_tracker.8xv7n16602001125, device_tracker.timnmap
       state: 'not_home'
       for:
         minutes: 10
