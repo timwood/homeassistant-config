@@ -19,5 +19,41 @@
   action:
   - service: notify.local_smtp
     data:
-      title: 'Thermostat set below 60 or above 80  degrees fahrenheit!'
+      title: 'Thermostat set below 60 or above 80  degrees fahrenheit'
       message: 'The Honeywell thermostat is set below 60 or above 80 degrees fahrenheit'
+
+- alias: 'Turn heat up as I get closer to home'
+  trigger:
+    platform: numeric_state
+    entity_id: proximity.home
+    # Trigger when becoming 1-5 miles away
+    below: 5
+    above: 1
+  condition:
+    condition: and
+    conditions:
+        # Heading home
+      - condition: template
+        value_template: '{{ states.proximity.home.attributes.dir_of_travel == "towards" }}'
+
+        # System currently set to heat
+      - condition: template
+        value_template: '{{ states.climate.thermostat.attributes.operation_mode == "heat" }}'
+
+        # Current temp lower than 70
+      - condition: template
+        value_template: '{{ states.climate.thermostat.attributes.current_temperature < 70  }}'
+
+        # Nobody home
+#      - condition: state
+#        entity_id: group.all_devices
+#        state: 'not_home'
+
+  action:
+  - service: notify.local_smtp
+    data:
+      title: 'Almost home. Turn up the heat.'
+      message: 'The Honeywell thermostat is set below 70 degrees fahrenheit, turning on heat to warm the house before you get home.'
+#  - service: climate.set_temperature
+#    data:
+#      temperature: 71
