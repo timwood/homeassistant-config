@@ -106,6 +106,20 @@ zone:
     radius: 250
     icon: mdi:building
 
+proximity:
+  home:
+    devices:
+      # Tim
+      - device_tracker.8xv7n16602001125
+      # Tracy
+      - device_tracker.zy223hffqx
+    unit_of_measurement: mi
+  tim_work:
+    devices:
+      # Tim
+      - device_tracker.8xv7n16602001125
+    unit_of_measurement: mi
+
 input_select:
   music_test:
     name: Music test
