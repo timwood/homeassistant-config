@@ -221,6 +221,9 @@ input_boolean:
     name: Tracy Home
     initial: on
     icon: mdi:cellphone-android
+  kitchen_motion_low:
+    name: Kitchen Motion Low
+    initial: off
 
 emulated_hue:
   type: google_home
