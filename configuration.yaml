@@ -183,17 +183,17 @@ climate:
   away_temperature: 17.2
   region: us
 
-binary_sensor:
-- platform: rest
-  name: Hallway Motion
-  sensor_class: motion
-  resource: !secret hallway_cam_motion
-  value_template: '{{ value_json.motion_active.data[0][1][0] | round(0) }}'
-- platform: rest
-  name: Kitchen Motion
-  sensor_class: motion
-  resource: !secret kitchen_cam_motion
-  value_template: '{{ value_json.motion_active.data[0][1][0] | round(0) }}'
+#binary_sensor:
+#- platform: rest
+#  name: Hallway Motion
+#  sensor_class: motion
+#  resource: !secret hallway_cam_motion
+#  value_template: '{{ value_json.motion_active.data[0][1][0] | round(0) }}'
+#- platform: rest
+#  name: Kitchen Motion
+#  sensor_class: motion
+#  resource: !secret kitchen_cam_motion
+#  value_template: '{{ value_json.motion_active.data[0][1][0] | round(0) }}'
 #- platform: rest
 #  name: Living Room Motion
 #  sensor_class: motion
@@ -221,9 +221,12 @@ input_boolean:
     name: Tracy Home
     initial: on
     icon: mdi:cellphone-android
-  kitchen_motion_low:
-    name: Kitchen Motion Low
-    initial: off
+#  kitchen_motion_low:
+#    name: Kitchen Motion Low
+#    initial: off
+#  livingroom_low_motion:
+#    name: Living Room Motion Low
+#    initial: off
 
 emulated_hue:
   type: google_home

@@ -1,0 +1,85 @@
+###- alias: Living Room low motion
+###  hide_entity: true
+###  trigger:
+###    platform: numeric_state
+###    entity_id: sensor.livingroom_motion_precise
+###    below: 60
+###  action:
+###    service: homeassistant.turn_on
+###    entity_id: input_boolean.livingroom_motion_low
+###- alias: Living Room high motion
+###  hide_entity: true
+###  trigger:
+###    platform: numeric_state
+###    entity_id: sensor.livingroom_motion_precise
+###    above: 61
+###  action:
+###    service: homeassistant.turn_off
+###    entity_id: input_boolean.livingroom_motion_low
+###
+###- alias: Go go gadget livingroom lights on
+###  hide_entity: true
+###  trigger:
+###    platform: numeric_state
+###    entity_id: sensor.livingroom_motion_precise
+###    above: 50
+###  condition:
+###  - condition: sun
+###    after: sunset
+###    after_offset: "-00:30:00"
+###  - condition: state
+###    entity_id: light.living_room_ceiling_2
+###    state: 'off'
+###    for:
+###      hours: 0
+###      minutes: 0
+###      seconds: 15
+###    entity_id: light.living_room_ceiling_6
+###    state: 'off'
+###    for:
+###      hours: 0
+###      minutes: 0
+###      seconds: 15
+###  action:
+###    service: homeassistant.turn_on
+###    entity_id: group.living
+###
+###- alias: Go go gadget livingroom lights off
+###  hide_entity: true
+###  trigger:
+###  - platform: state
+###    entity_id: light.living_room_ceiling_6
+###    from: 'off'
+###    to: 'on'
+###    for:
+###      hours: 0
+###      minutes: 10
+###      seconds: 0
+###  - platform: state
+###    entity_id: light.living_room_ceiling_2
+###    from: 'off'
+###    to: 'on'
+###    for:
+###      hours: 0
+###      minutes: 10
+###      seconds: 0
+###  - platform: state
+###    entity_id: input_boolean.livingroom_low_motion
+###    state: 'on'
+###    for:
+###      hours: 0
+###      minutes: 0
+###      seconds: 60
+###  condition:
+###  - condition: sun
+###    after: sunset
+###    after_offset: "-00:30:00"
+###  action:
+###  - service: homeassistant.turn_off
+###    entity_id: group.living
+###    data:
+###      transition: 5
+###  - service: notify.local_smtp
+###    data:
+###      title: 'Turning lights off in Living Room after 10 minutes of inactivity'
+###      message: 'Lights off'

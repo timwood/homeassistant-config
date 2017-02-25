@@ -1,73 +1,74 @@
-- alias: Kitchen low motion
-  hide_entity: true
-  trigger:
-    platform: numeric_state
-    entity_id: sensor.kitchen_motion_precise
-    below: 60
-  action:
-    service: homeassistant.turn_on
-    entity_id: input_boolean.kitchen_motion_low
-- alias: Kitchen high motion
-  hide_entity: true
-  trigger:
-    platform: numeric_state
-    entity_id: sensor.kitchen_motion_precise
-    above: 61
-  action:
-    service: homeassistant.turn_off
-    entity_id: input_boolean.kitchen_motion_low
-
-- alias: Go go gadget kitchen lights on
-  hide_entity: true
-  trigger:
-    platform: numeric_state
-    entity_id: sensor.kitchen_motion_precise
-    above: 50
-  condition:
-  - condition: sun
-    after: sunset
-    after_offset: "-00:30:00"
-  - condition: state
-    entity_id: light.kitchen_ceiling
-    state: 'off'
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 15
-  action:
-    service: light.turn_on
-    entity_id: light.kitchen_ceiling
-    data:
-      transition: 5
-
-- alias: Go go gadget kitchen lights off
-  hide_entity: true
-  trigger:
-  - platform: state
-    entity_id: light.kitchen_ceiling
-    from: 'off'
-    to: 'on'
-    for:
-      hours: 0
-      minutes: 10
-      seconds: 0
-  - platform: state
-    entity_id: input_boolean.kitchen_low_motion
-    state: 'on'
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 60
-  condition:
-  - condition: sun
-    after: sunset
-    after_offset: "-00:30:00"
-  action:
-  - service: light.turn_off
-    entity_id: light.kitchen_ceiling
-    data:
-      transition: 5
-  - service: notify.local_smtp
-    data:
-      title: 'Turning lights off in Kitchen after 10 minutes of inactivity'
-      message: 'Lights off'
+### Disable 2/24/2016 after complaints from corporate.
+###- alias: Kitchen low motion
+###  hide_entity: true
+###  trigger:
+###    platform: numeric_state
+###    entity_id: sensor.kitchen_motion_precise
+###    below: 60
+###  action:
+###    service: homeassistant.turn_on
+###    entity_id: input_boolean.kitchen_motion_low
+###- alias: Kitchen high motion
+###  hide_entity: true
+###  trigger:
+###    platform: numeric_state
+###    entity_id: sensor.kitchen_motion_precise
+###    above: 61
+###  action:
+###    service: homeassistant.turn_off
+###    entity_id: input_boolean.kitchen_motion_low
+###
+###- alias: Go go gadget kitchen lights on
+###  hide_entity: true
+###  trigger:
+###    platform: numeric_state
+###    entity_id: sensor.kitchen_motion_precise
+###    above: 50
+###  condition:
+###  - condition: sun
+###    after: sunset
+###    after_offset: "-00:30:00"
+###  - condition: state
+###    entity_id: light.kitchen_ceiling
+###    state: 'off'
+###    for:
+###      hours: 0
+###      minutes: 0
+###      seconds: 15
+###  action:
+###    service: light.turn_on
+###    entity_id: light.kitchen_ceiling
+###    data:
+###      transition: 5
+###
+###- alias: Go go gadget kitchen lights off
+###  hide_entity: true
+###  trigger:
+###  - platform: state
+###    entity_id: light.kitchen_ceiling
+###    from: 'off'
+###    to: 'on'
+###    for:
+###      hours: 0
+###      minutes: 10
+###      seconds: 0
+###  - platform: state
+###    entity_id: input_boolean.kitchen_low_motion
+###    state: 'on'
+###    for:
+###      hours: 0
+###      minutes: 0
+###      seconds: 60
+###  condition:
+###  - condition: sun
+###    after: sunset
+###    after_offset: "-00:30:00"
+###  action:
+###  - service: light.turn_off
+###    entity_id: light.kitchen_ceiling
+###    data:
+###      transition: 5
+###  - service: notify.local_smtp
+###    data:
+###      title: 'Turning lights off in Kitchen after 10 minutes of inactivity'
+###      message: 'Lights off'
