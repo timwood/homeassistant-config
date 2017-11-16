@@ -157,18 +157,18 @@ input_select:
 switch:
   platform: command_line
   switches:
-    kitchen_camera_flash:
-      command_on: !secret kitchen_camera_flash_cmd_on
-      command_off: !secret kitchen_camera_flash_cmd_off
-      command_state: !secret kitchen_camera_flash_cmd_state
-      value_template: '{{ value_json.curvals.torch == "on" }}'
-      friendly_name: Kitchen Camera Flash
-    living_room_camera_flash:
-      command_on: !secret livingroom_camera_flash_cmd_on
-      command_off: !secret livingroom_camera_flash_cmd_off
-      command_state: !secret livingroom_camera_flash_cmd_state
-      value_template: '{{ value_json.curvals.torch == "on" }}'
-      friendly_name: Living Room Camera Flash
+#    kitchen_camera_flash:
+#      command_on: !secret kitchen_camera_flash_cmd_on
+#      command_off: !secret kitchen_camera_flash_cmd_off
+#      command_state: !secret kitchen_camera_flash_cmd_state
+#      value_template: '{{ value_json.curvals.torch == "on" }}'
+#      friendly_name: Kitchen Camera Flash
+#    living_room_camera_flash:
+#      command_on: !secret livingroom_camera_flash_cmd_on
+#      command_off: !secret livingroom_camera_flash_cmd_off
+#      command_state: !secret livingroom_camera_flash_cmd_state
+#      value_template: '{{ value_json.curvals.torch == "on" }}'
+#      friendly_name: Living Room Camera Flash
 
 media_player:
   - platform: onkyo
