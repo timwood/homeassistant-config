@@ -24,3 +24,4 @@ bin/restart_hass.sh
 .HA_VERSION
 tts/
 emulated_hue_ids.json
+.insteon_cache/
