@@ -155,8 +155,8 @@ input_select:
     icon: mdi:music-box
 
 switch:
-  platform: command_line
-  switches:
+#  platform: command_line
+#  switches:
 #    kitchen_camera_flash:
 #      command_on: !secret kitchen_camera_flash_cmd_on
 #      command_off: !secret kitchen_camera_flash_cmd_off
@@ -172,7 +172,7 @@ switch:
 
 media_player:
   - platform: onkyo
-    host: onkyo
+    host: 192.168.0.17
     name: Surround Sound Living Room
     sources:
       video1: 'Boxee'
@@ -190,7 +190,7 @@ media_player:
 #    host: Chromecast-Audio-Kitchen
 
 insteon_local:
-  host: hub
+  host: 192.168.0.35
   username: !secret insteon_hub_un
   password: !secret insteon_hub_pass
   timeout: 10
