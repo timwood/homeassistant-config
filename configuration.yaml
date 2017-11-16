@@ -63,15 +63,39 @@ camera:
 - platform: generic
   still_image_url: !secret wunderground_radar_loop
   name: Local Radar
-- platform: mjpeg
-  mjpeg_url: !secret kitchen_cam_url
-  name: Kitchen
-- platform: mjpeg
-  mjpeg_url: !secret livingroom_cam_url
-  name: Living Room
-- platform: mjpeg
-  mjpeg_url: !secret hallway_cam_url
-  name: Hallway
+# Android IP webcams
+#android_ip_webcam:
+#- host: !secret kitchen_cam_host
+#  name: Kitchen
+#  motion_sensor:
+#  sensors:
+#  - audio_connections
+#  - light
+#  - motion
+#  - battery_level
+#  switches:
+#  - night_vision
+#  - torch
+#- host: !secret livingroom_cam_host
+#  name: Living Room
+#  motion_sensor:
+#  sensors:
+#  - audio_connections
+#  - light
+#  - motion
+#  - battery_level
+#  switches:
+#  - night_vision
+#  - torch
+#- host: !secret hallway_cam_host
+#  name: Hallway
+#  motion_sensor:
+#  sensors:
+#  - motion
+#  - battery_level
+#  switches:
+#  - night_vision
+#  - torch
 
 # Text to speech
 tts:
@@ -86,7 +110,7 @@ device_tracker:
 #    username: !secret router_username
 #    password: !secret router_password
   - platform: nmap_tracker
-    hosts: 192.168.0.1/24
+    hosts: 192.168.86.1/24
 #    home_interval: 10
     consider_home: 600
     interval_seconds: 30
