@@ -4,24 +4,24 @@ hallway:
   entities:
     - light.downstairs_hallway_light
 
-kitchen:
-  name: Kitchen
-  view: no
-  entities:
-    - light.kitchen_ceiling
+#kitchen:
+#  name: Kitchen
+#  view: no
+#  entities:
+#    - light.kitchen_ceiling
 
-living:
-  name: Living Room
-  view: no
-  entities:
-    - light.living_room_ceiling_2
-    - light.living_room_ceiling_6
+#living:
+#  name: Living Room
+#  view: no
+#  entities:
+#    - light.living_room_ceiling_2
+#    - light.living_room_ceiling_6
 
-kids:
-  name: Boy's Room
-  view: no
-  entities:
-    - light.boys_ceiling
+#kids:
+#  name: Boy's Room
+#  view: no
+#  entities:
+#    - light.boys_ceiling
 
 tim:
   name: Tim's Lamp
@@ -29,29 +29,29 @@ tim:
   entities:
     - light.tims_lamp
 
-upstairs:
-  name: Upstairs Lights
-  view: no
-  entities:
-    - light.tims_lamp
-    - light.boys_ceiling
+#upstairs:
+#  name: Upstairs Lights
+#  view: no
+#  entities:
+#    - light.tims_lamp
+#    - light.boys_ceiling
 
-downstairs:
-  name: Downstairs Lights
-  view: no
-  entities:
-    - light.living_room_ceiling_2
-    - light.living_room_ceiling_6
-    - light.kitchen_ceiling
-    - light.downstairs_hallway_light
+#downstairs:
+#  name: Downstairs Lights
+#  view: no
+#  entities:
+#    - light.living_room_ceiling_2
+#    - light.living_room_ceiling_6
+#    - light.kitchen_ceiling
+#    - light.downstairs_hallway_light
 
-all:
-  name: Lights
-  view: yes
-  entities:
-    - light.tims_lamp
-    - light.boys_ceiling
-    - light.living_room_ceiling_2
-    - light.living_room_ceiling_6
-    - light.kitchen_ceiling
-    - light.downstairs_hallway_light
+#all:
+#  name: Lights
+#  view: yes
+#  entities:
+#    - light.tims_lamp
+#    - light.boys_ceiling
+#    - light.living_room_ceiling_2
+#    - light.living_room_ceiling_6
+#    - light.kitchen_ceiling
+#    - light.downstairs_hallway_light
