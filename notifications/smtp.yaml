@@ -2,3 +2,5 @@
   platform: smtp
   sender: !secret sender_email
   recipient: !secret recipient_email
+  port: 25
+  encryption: none

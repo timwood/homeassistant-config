@@ -18,6 +18,7 @@ homeassistant:
 
 # Enables the frontend
 frontend:
+  javascript_version: latest
 
 http:
   # Uncomment this to add a password (recommended!)
