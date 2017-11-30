@@ -1,4 +1,5 @@
-- alias: 'Doorbell is ringing'
+- id: front_doorbell_ringing
+  alias: 'Front doorbell is ringing'
   trigger:
     platform: state
     entity_id: binary_sensor.ring_front_door_ding
@@ -6,7 +7,16 @@
     to: 'on'
   action:
   - service: tts.google_say
-    entity_id: media_player.all
     data_template:
-      message:  >
-        The doorbell is ringing, someone is at the front door.
+      entity_id: >
+        {% if (states.sensor.time.state < '20:30:00') and (states.sensor.time.state > '06:00:00') %}
+          entity_id: media_player.all
+          data_template:
+            message:  >
+              The doorbell is ringing, someone is at the front door.
+        {% else %}
+          entity_id: media_player.late_doorbell
+          data_template:
+            message:  >
+              The doorbell is ringing, someone is at the front door.
+        {% endif %}
