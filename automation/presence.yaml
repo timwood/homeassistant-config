@@ -16,12 +16,12 @@
   trigger:
     - platform: state
       entity_id: device_tracker.8xv7n16602001125
-      state: 'not_home'
+      to: 'not_home'
       for:
         minutes: 10
     - platform: state
       entity_id: device_tracker.timnmap
-      state: 'not_home'
+      to: 'not_home'
   action:
     - service: homeassistant.turn_off
       entity_id: input_boolean.timhome
@@ -48,12 +48,12 @@
   trigger:
     - platform: state
       entity_id: device_tracker.zy223hffqx
-      state: 'not_home'
+      to: 'not_home'
       for:
         minutes: 10
     - platform: state
       entity_id: device_tracker.tracynmap
-      state: 'not_home'
+      to: 'not_home'
   action:
     - service: homeassistant.turn_off
       entity_id: input_boolean.tracyhome
@@ -80,7 +80,7 @@
   trigger:
     - platform: state
       entity_id: device_tracker.8xv7n16602001125, device_tracker.timnmap
-      state: 'home'
+      to: 'home'
   action:
     - service: homeassistant.turn_on
       entity_id: input_boolean.timhome
@@ -107,7 +107,7 @@
   trigger:
     - platform: state
       entity_id: device_tracker.zy223hffqx, device_tracker.tracynmap
-      state: 'home'
+      to: 'home'
   action:
     - service: homeassistant.turn_on
       entity_id: input_boolean.tracyhome

@@ -2,7 +2,7 @@
   hide_entity: False
   trigger:
     platform: time
-    after: '1:01:00'
+    at: '1:01:00'
   action:
   - service: climate.set_temperature
     data:

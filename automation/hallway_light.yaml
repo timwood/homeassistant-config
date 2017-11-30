@@ -27,7 +27,7 @@
   hide_entity: false
   trigger:
     platform: time
-    after: '1:01:00'
+    at: '1:01:00'
   action:
   - service: light.turn_off
     entity_id: light.downstairs_hallway_light
