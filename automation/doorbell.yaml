@@ -1,0 +1,12 @@
+- alias: 'Doorbell is ringing'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.ring_front_door_ding
+    from: 'off'
+    to: 'on'
+  action:
+  - service: tts.google_say
+    entity_id: media_player.all
+    data_template:
+      message:  >
+        The doorbell is ringing, someone is at the front door.

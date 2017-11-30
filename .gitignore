@@ -4,6 +4,7 @@
 *.crt
 *.key
 *.conf
+*.swp
 www
 OZW_Log.txt
 home-assistant.log
@@ -25,3 +26,4 @@ bin/restart_hass.sh
 tts/
 emulated_hue_ids.json
 .insteon_cache/
+.ring_cache.pickle
