@@ -234,3 +234,9 @@ emulated_hue:
   expose_by_default: true
   exposed_domains:
     - light
+
+ring:
+  username: tim@buchbinder.org
+  password: !secret ring_password
+binary_sensor:
+  - platform: ring
