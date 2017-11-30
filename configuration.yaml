@@ -259,7 +259,7 @@ emulated_hue:
     - light
 
 ring:
-  username: tim@buchbinder.org
+  username: !secret ring_username
   password: !secret ring_password
 
 binary_sensor:
