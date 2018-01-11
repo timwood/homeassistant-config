@@ -13,18 +13,12 @@
   - service: script.turn_on
     entity_id: script.doorbell
 
-#  - service: tts.google_say
-#    entity_id: media_player.all
-#    data_template:
-#      message:  >
-#        The doorbell is ringing, someone is at the front door.
-
 - id: front_doorbell_ringing_late
   alias: 'Front doorbell is ringing late night'
+  initial_state: 'on'
   trigger:
     platform: state
     entity_id: binary_sensor.ring_front_door_ding
-    from: 'off'
     to: 'on'
   condition:
     - condition: time
@@ -32,10 +26,4 @@
       before: '06:30:00'
   action:
   - service: script.turn_on
-    entity_id: script.doorbell
-
-#  - service: tts.google_say
-#    entity_id: media_player.late_doorbell
-#    data_template:
-#      message:  >
-#        The doorbell is ringing, someone is at the front door.
+    entity_id: script.late_doorbell

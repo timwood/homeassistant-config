@@ -3,7 +3,7 @@ sequence:
   - service: media_player.volume_set
     entity_id: media_player.all
     data:
-      volume_level: 0.08
+      volume_level: 0.25
   - service: media_player.play_media
     data_template:
       entity_id: media_player.all
