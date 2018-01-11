@@ -39,27 +39,3 @@
 #    data_template:
 #      message:  >
 #        The doorbell is ringing, someone is at the front door.
-
-doorbell:
-  sequence:
-    - service: media_player.volume_set
-      entity_id: media_player.all
-      data:
-        volume_level: 0.50
-    - service: media_player.play_media
-      data_template:
-        entity_id: media_player.all
-        media_content_id: !secret doorbell_chime_mp3_url
-        media_content_type: music
-
-late_doorbell:
-  sequence:
-    - service: media_player.volume_set
-      entity_id: media_player.late_doorbell
-      data:
-        volume_level: 0.50
-    - service: media_player.play_media
-      data_template:
-        entity_id: media_player.late_doorbell
-        media_content_id: !secret doorbell_chime_mp3_url
-        media_content_type: music

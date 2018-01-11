@@ -1,0 +1,23 @@
+doorbell:
+  sequence:
+    - service: media_player.volume_set
+      entity_id: media_player.all
+      data:
+        volume_level: 0.08
+    - service: media_player.play_media
+      data_template:
+        entity_id: media_player.all
+        media_content_id: !secret doorbell_chime_mp3_url
+        media_content_type: music
+
+late_doorbell:
+  sequence:
+    - service: media_player.volume_set
+      entity_id: media_player.living_room
+      data:
+        volume_level: 0.08
+    - service: media_player.play_media
+      data_template:
+        entity_id: media_player.living_room
+        media_content_id: !secret doorbell_chime_mp3_url
+        media_content_type: music
