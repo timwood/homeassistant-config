@@ -54,6 +54,6 @@
     data:
       title: 'Almost home. Turn up the heat.'
       message: 'The Honeywell thermostat is set below 70 degrees fahrenheit, turning on heat to warm the house before you get home.'
-#  - service: climate.set_temperature
-#    data:
-#      temperature: 71
+  - service: climate.set_temperature
+    data:
+      temperature: 71
