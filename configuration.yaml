@@ -174,7 +174,7 @@ switch:
 media_player:
   - platform: onkyo
     host: 192.168.0.17
-    name: Surround Sound Living Room
+    name: Surround Sound Basement
     sources:
       video1: 'Boxee'
       video2: 'DVR'
