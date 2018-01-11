@@ -1,20 +1,23 @@
 - id: front_doorbell_ringing
   alias: 'Front doorbell is ringing'
+  initial_state: 'on'
   trigger:
     platform: state
     entity_id: binary_sensor.ring_front_door_ding
-    from: 'off'
     to: 'on'
   condition:
     - condition: time
       after: '06:30:00'
       before: '20:30:00'
   action:
-  - service: tts.google_say
-    entity_id: media_player.all
-    data_template:
-      message:  >
-        The doorbell is ringing, someone is at the front door.
+  - service: script.turn_on
+    entity_id: script.doorbell
+
+#  - service: tts.google_say
+#    entity_id: media_player.all
+#    data_template:
+#      message:  >
+#        The doorbell is ringing, someone is at the front door.
 
 - id: front_doorbell_ringing_late
   alias: 'Front doorbell is ringing late night'
@@ -28,8 +31,35 @@
       after: '20:30:00'
       before: '06:30:00'
   action:
-  - service: tts.google_say
-    entity_id: media_player.late_doorbell
-    data_template:
-      message:  >
-        The doorbell is ringing, someone is at the front door.
+  - service: script.turn_on
+    entity_id: script.doorbell
+
+#  - service: tts.google_say
+#    entity_id: media_player.late_doorbell
+#    data_template:
+#      message:  >
+#        The doorbell is ringing, someone is at the front door.
+
+doorbell:
+  sequence:
+    - service: media_player.volume_set
+      entity_id: media_player.all
+      data:
+        volume_level: 0.50
+    - service: media_player.play_media
+      data_template:
+        entity_id: media_player.all
+        media_content_id: !secret doorbell_chime_mp3_url
+        media_content_type: music
+
+late_doorbell:
+  sequence:
+    - service: media_player.volume_set
+      entity_id: media_player.late_doorbell
+      data:
+        volume_level: 0.50
+    - service: media_player.play_media
+      data_template:
+        entity_id: media_player.late_doorbell
+        media_content_id: !secret doorbell_chime_mp3_url
+        media_content_type: music
