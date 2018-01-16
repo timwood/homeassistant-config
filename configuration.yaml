@@ -253,11 +253,11 @@ input_boolean:
 #    name: Living Room Motion Low
 #    initial: off
 
-emulated_hue:
-  listen_port: 80
-  expose_by_default: true
-  exposed_domains:
-    - light
+#emulated_hue:
+#  listen_port: 80
+#  expose_by_default: true
+#  exposed_domains:
+#    - light
 
 ring:
   username: !secret ring_username
